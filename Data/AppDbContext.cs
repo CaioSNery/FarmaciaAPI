@@ -12,9 +12,9 @@ namespace FarmaciaSOFT.Data
     {
         public AppDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         
-        public DbSet<Produtos> Produtos { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
         
         public DbSet<Venda> Venda { get; set; }
         

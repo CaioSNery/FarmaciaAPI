@@ -22,15 +22,15 @@ namespace FarmaciaSOFT.Services
             _context = context;
             _smsService = smsService;
         }
-        public async Task<object> AddClienteAsync(Clientes clientes)
+        public async Task<object> AddClienteAsync(Cliente cliente)
         {
-            _context.Clientes.Add(clientes);
+            _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            string msg = $"Olá {clientes.Nome}, seu cadastro foi registrado com sucesso,aproveite a promoção de 10% de desconto!";
-            await _smsService.EnviarSMSAsync(clientes.Telefone, msg);
+            string msg = $"Olá {cliente.Nome}, seu cadastro foi registrado com sucesso,aproveite a promoção de 10% de desconto!";
+            await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
 
-            return clientes;
+            return cliente;
         }
 
         public async Task<object> BuscarClientePorIdAsync(int id)
@@ -62,7 +62,7 @@ namespace FarmaciaSOFT.Services
             return true;
         }
 
-        public async Task<bool> EditarClienteAsync(int id, Clientes clienteupdate)
+        public async Task<bool> EditarClienteAsync(int id, Cliente clienteupdate)
         {
             var cliente = await _context.Clientes.FindAsync(id);
             if (cliente == null) return false;

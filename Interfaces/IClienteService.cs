@@ -9,7 +9,7 @@ namespace FarmaciaSOFT.Interfaces
 {
     public interface IClienteService
     {
-        Task<object> AddClienteAsync(Clientes clientes);
+        Task<object> AddClienteAsync(Cliente clientes);
 
         Task<object> BuscarClientePorIdAsync(int id);
 
@@ -17,7 +17,7 @@ namespace FarmaciaSOFT.Interfaces
 
         Task<IEnumerable<ClienteDTO>> ListarClienteAsync();
 
-        Task<bool> EditarClienteAsync(int id, Clientes clienteupdate);
+        Task<bool> EditarClienteAsync(int id, Cliente clienteupdate);
 
     }
 }

@@ -10,9 +10,9 @@ namespace FarmaciaSOFT.Interfaces
 {
     public interface IProdutoService
     {
-        Task<object> AdicionarProdutoAsync(Produtos produto);
+        Task<object> AdicionarProdutoAsync(Produto produto);
 
-        Task<bool> EditarProdutoAsync(int id, Produtos produtoupdate);
+        Task<bool> EditarProdutoAsync(int id, Produto produtoupdate);
 
         Task<bool> DeletarProdutoAsync(int id);
 

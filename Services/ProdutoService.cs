@@ -19,7 +19,7 @@ namespace FarmaciaSOFT.Services
         {
             _context = context;
         }
-        public async Task<object> AdicionarProdutoAsync(Produtos produto)
+        public async Task<object> AdicionarProdutoAsync(Produto produto)
         {
             _context.Produtos.Add(produto);
             await _context.SaveChangesAsync();
@@ -55,7 +55,7 @@ namespace FarmaciaSOFT.Services
             return true;
         }
 
-        public async Task<bool> EditarProdutoAsync(int id, Produtos produtoupdate)
+        public async Task<bool> EditarProdutoAsync(int id, Produto produtoupdate)
         {
             var produto = await _context.Produtos.FindAsync(id);
             if (produto == null) return false;

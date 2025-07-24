@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FarmaciaSOFT.Models
 {
-    public class Clientes
+    public class Cliente
     {
         
         public int Id { get; set; }

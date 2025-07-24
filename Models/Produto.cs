@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FarmaciaSOFT.Models
 {
-    public class Produtos
+    public class Produto
     {
         public int Id { get; set; }
         public int Estoque { get; set; }
