@@ -13,6 +13,7 @@ Seu objetivo é permitir o gerenciamento de vendas de medicamentos, aplicação 
 - Aplicação de **10% de desconto** para clientes cadastrados
 - Atualização de estoque
 - Envio de confirmação de venda via **SMS (Twilio)**
+- Autenticação JWT
 
 ---
 
@@ -83,7 +84,6 @@ dotnet run
 ## 🚧 Funcionalidades Futuras
 
 - Integração com AutoMapper
-- Autenticação JWT
 - Testes unitários com xUnit e Moq
 - Dashboard para vendas
 
