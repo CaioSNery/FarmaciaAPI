@@ -16,9 +16,9 @@ namespace FarmaciaSOFT.Models
         public DateTime DataVenda { get; set; } = DateTime.Now;
 
         public int? ClienteId { get; set; }
-        public Clientes Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
         public int ProdutoId { get; set; }
-        public Produtos Produto{ get; set; }
+        public Produto Produto{ get; set; }
     }
 }

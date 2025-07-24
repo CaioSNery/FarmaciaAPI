@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FarmaciaSOFT.Maps
 {
-    public class ProdutoMap : IEntityTypeConfiguration<Produtos>
+    public class ProdutoMap : IEntityTypeConfiguration<Produto>
     {
-        public void Configure(EntityTypeBuilder<Produtos> builder)
+        public void Configure(EntityTypeBuilder<Produto> builder)
         {
             builder.ToTable("Produtos");
 

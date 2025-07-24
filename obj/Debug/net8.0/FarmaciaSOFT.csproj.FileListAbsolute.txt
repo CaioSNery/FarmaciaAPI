@@ -144,3 +144,4 @@ C:\Projetos\FarmaciaSft\FarmaciaSOFT\obj\Debug\net8.0\refint\FarmaciaSOFT.dll
 C:\Projetos\FarmaciaSft\FarmaciaSOFT\obj\Debug\net8.0\FarmaciaSOFT.pdb
 C:\Projetos\FarmaciaSft\FarmaciaSOFT\obj\Debug\net8.0\FarmaciaSOFT.genruntimeconfig.cache
 C:\Projetos\FarmaciaSft\FarmaciaSOFT\obj\Debug\net8.0\ref\FarmaciaSOFT.dll
+C:\Projetos\FarmaciaSft\FarmaciaSOFT\obj\Debug\net8.0\FarmaciaSOFT.sourcelink.json

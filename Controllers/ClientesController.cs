@@ -23,7 +23,7 @@ namespace FarmaciaSOFT.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AdicionarClientes([FromBody] Clientes clientes)
+        public async Task<IActionResult> AdicionarClientes([FromBody] Cliente clientes)
         {
             var resultado = await _service.AddClienteAsync(clientes);
             return Ok(resultado);
@@ -48,7 +48,7 @@ namespace FarmaciaSOFT.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> AtualizarClientes(int id, [FromBody] Clientes clienteupdate)
+        public async Task<IActionResult> AtualizarClientes(int id, [FromBody] Cliente clienteupdate)
         {
             var resultado = await _service.EditarClienteAsync(id, clienteupdate);
             if (!resultado) return NotFound();

@@ -25,7 +25,7 @@ namespace FarmaciaSOFT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AdicionarProduto(Produtos produtos)
+        public async Task<IActionResult> AdicionarProduto(Produto produtos)
         {
             var resultado = await _service.AdicionarProdutoAsync(produtos);
             return Ok(resultado);
@@ -49,7 +49,7 @@ namespace FarmaciaSOFT.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> AtualizarProduto(int id, [FromBody] Produtos produtoAtualizado)
+        public async Task<IActionResult> AtualizarProduto(int id, [FromBody] Produto produtoAtualizado)
 
         {
             var produto = await _service.EditarProdutoAsync(id, produtoAtualizado);

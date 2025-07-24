@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FarmaciaSOFT.Maps
 {
-    public class ClienteMap : IEntityTypeConfiguration<Clientes>
+    public class ClienteMap : IEntityTypeConfiguration<Cliente>
     {
-        public void Configure(EntityTypeBuilder<Clientes> builder)
+        public void Configure(EntityTypeBuilder<Cliente> builder)
         {
             builder.ToTable("Clientes");
 
