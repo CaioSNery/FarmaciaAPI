@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\FarmaciaSft\\FarmaciaSOFT\\FarmaciaSOFT.csproj": {}
+    "C:\\Projetos\\Farmacia\\FarmaciaAPI\\FarmaciaSOFT.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\FarmaciaSft\\FarmaciaSOFT\\FarmaciaSOFT.csproj": {
+    "C:\\Projetos\\Farmacia\\FarmaciaAPI\\FarmaciaSOFT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\FarmaciaSft\\FarmaciaSOFT\\FarmaciaSOFT.csproj",
+        "projectUniqueName": "C:\\Projetos\\Farmacia\\FarmaciaAPI\\FarmaciaSOFT.csproj",
         "projectName": "FarmaciaSOFT",
-        "projectPath": "C:\\Projetos\\FarmaciaSft\\FarmaciaSOFT\\FarmaciaSOFT.csproj",
-        "packagesPath": "C:\\Users\\computador\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\FarmaciaSft\\FarmaciaSOFT\\obj\\",
+        "projectPath": "C:\\Projetos\\Farmacia\\FarmaciaAPI\\FarmaciaSOFT.csproj",
+        "packagesPath": "C:\\Users\\Caio Nery\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\Farmacia\\FarmaciaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\computador\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Caio Nery\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -95,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

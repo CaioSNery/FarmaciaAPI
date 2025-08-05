@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using AutoMapper;
 
 namespace FarmaciaSOFT.Services
 {
@@ -17,10 +18,13 @@ namespace FarmaciaSOFT.Services
         private readonly AppDbContext _context;
         private readonly ISMSService _smsService;
 
-         public VendaService(AppDbContext context, ISMSService smsService)
+        private readonly IMapper _mapper;
+
+        public VendaService(AppDbContext context, ISMSService smsService, IMapper mapper)
         {
-         _context = context;
-        _smsService = smsService;
+            _context = context;
+            _smsService = smsService;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<Venda>> ListarVendasAsync()
@@ -68,41 +72,41 @@ namespace FarmaciaSOFT.Services
 
             var venda = new Venda
             {
-                NomeProduto=produto.Nome,
-                ProdutoId =vendaDto.ProdutoId,
-                ClienteId=vendaDto.ClienteId,
+
+                ProdutoId = vendaDto.ProdutoId,
+                ClienteId = vendaDto.ClienteId,
                 Quantidade = vendaDto.Quantidade,
-                ValorUnitario = ValorUnitario,
+
                 Total = ValorTotal,
                 DataVenda = DateTime.Now,
-                
+
 
             };
 
             _context.Venda.Add(venda);
             await _context.SaveChangesAsync();
 
-            
-            
 
-             if (cliente != null && produto != null)
-            {
-                string msg = $"Olá {cliente.Nome}, sua compra de {venda.Quantidade}x {produto.Nome} foi registrada com sucesso!";
-                await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
-            }
+
+
+            // if (cliente != null && produto != null)
+            // {
+            //     string msg = $"Olá {cliente.Nome}, sua compra de {venda.Quantidade}x {produto.Nome} foi registrada com sucesso!";
+            //     await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
+            // }
 
             return new
             {
                 Mensagem = "Venda Realizada com Sucesso !",
-                Cliente = cliente?.Nome ?? "Cliente nao Identificado",
+                Cliente = cliente?.Nome ?? "Cliente não Cadastrado",
                 Produto = produto.Nome,
                 Quantidade = vendaDto.Quantidade,
                 ValorUnitarioComDesconto = ValorUnitario,
                 Total = ValorTotal
             };
 
-            }
+        }
 
-       
+
     }
-    }
+}

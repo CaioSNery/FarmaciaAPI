@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
+using AutoMapper;
 using FarmaciaSOFT.Data;
 using FarmaciaSOFT.Dtos;
 using FarmaciaSOFT.Interfaces;
@@ -15,9 +16,11 @@ namespace FarmaciaSOFT.Services
     public class ProdutoService : IProdutoService
     {
         private readonly AppDbContext _context;
-        public ProdutoService(AppDbContext context)
+        private readonly IMapper _mapper;
+        public ProdutoService(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         public async Task<object> AdicionarProdutoAsync(Produto produto)
         {
@@ -32,10 +35,10 @@ namespace FarmaciaSOFT.Services
             .Where(p => p.Id == id)
             .Select(p => new ProdutoDTO
             {
-            Id = p.Id,
-            Nome = p.Nome,
-            Estoque = p.Estoque,
-            PrecoVenda = p.PrecoVenda
+                Id = p.Id,
+                Nome = p.Nome,
+                Estoque = p.Estoque,
+                PrecoVenda = p.PrecoVenda
             })
             .FirstOrDefaultAsync();
 
@@ -72,17 +75,8 @@ namespace FarmaciaSOFT.Services
 
         public async Task<IEnumerable<ProdutoDTO>> ListarProdutosAsync()
         {
-            return await _context.Produtos
-            .Select(p => new ProdutoDTO
-            {
-                Id = p.Id,
-                Nome = p.Nome,
-                Estoque = p.Estoque,
-                PrecoVenda = p.PrecoVenda
-                
-
-            })
-            .ToListAsync();
+            var produto = await _context.Produtos.ToListAsync();
+            return _mapper.Map<IEnumerable<ProdutoDTO>>(produto);
         }
     }
 }

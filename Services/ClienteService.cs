@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FarmaciaSOFT.Data;
 using FarmaciaSOFT.Dtos;
 using FarmaciaSOFT.Interfaces;
@@ -17,18 +18,20 @@ namespace FarmaciaSOFT.Services
 
         private readonly AppDbContext _context;
         private readonly ISMSService _smsService;
-        public ClienteService(AppDbContext context, ISMSService smsService)
+        private readonly IMapper _mapper;
+        public ClienteService(AppDbContext context, ISMSService smsService, IMapper mapper)
         {
             _context = context;
             _smsService = smsService;
+            _mapper = mapper;
         }
         public async Task<object> AddClienteAsync(Cliente cliente)
         {
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            string msg = $"Olá {cliente.Nome}, seu cadastro foi registrado com sucesso,aproveite a promoção de 10% de desconto!";
-            await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
+            // string msg = $"Olá {cliente.Nome}, seu cadastro foi registrado com sucesso,aproveite a promoção de 10% de desconto!";
+            // await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
 
             return cliente;
         }
@@ -48,7 +51,7 @@ namespace FarmaciaSOFT.Services
             if (cliente == null) return false;
 
             return cliente;
-            
+
         }
 
         public async Task<bool> DeletarClientePorIdAsync(int id)
@@ -71,7 +74,7 @@ namespace FarmaciaSOFT.Services
             cliente.Cpf = clienteupdate.Cpf;
             cliente.Nascimento = clienteupdate.Nascimento;
 
-            
+
             await _context.SaveChangesAsync();
 
             return true;
@@ -79,12 +82,8 @@ namespace FarmaciaSOFT.Services
 
         public async Task<IEnumerable<ClienteDTO>> ListarClienteAsync()
         {
-            return await _context.Clientes.Select(p=>new ClienteDTO
-            {
-                Id = p.Id,
-                Nome = p.Nome,
-                Cpf=p.Cpf
-            }).ToListAsync();
+            var cliente = await _context.Clientes.ToListAsync();
+            return _mapper.Map<IEnumerable<ClienteDTO>>(cliente);
         }
     }
 }

@@ -8,10 +8,9 @@ namespace FarmaciaSOFT.Models
     public class Venda
     {
         public int Id { get; set; }
-        public required string NomeProduto { get; set; }
 
         public int Quantidade { get; set; }
-        public decimal ValorUnitario { get; set; }
+
         public decimal Total { get; set; }
         public DateTime DataVenda { get; set; } = DateTime.Now;
 
@@ -19,6 +18,6 @@ namespace FarmaciaSOFT.Models
         public Cliente Cliente { get; set; }
 
         public int ProdutoId { get; set; }
-        public Produto Produto{ get; set; }
+        public Produto Produto { get; set; }
     }
 }

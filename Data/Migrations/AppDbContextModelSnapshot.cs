@@ -22,7 +22,7 @@ namespace FarmaciaSOFT.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FarmaciaSOFT.Models.Clientes", b =>
+            modelBuilder.Entity("FarmaciaSOFT.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace FarmaciaSOFT.Migrations
                     b.ToTable("Clientes", (string)null);
                 });
 
-            modelBuilder.Entity("FarmaciaSOFT.Models.Produtos", b =>
+            modelBuilder.Entity("FarmaciaSOFT.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,9 +93,6 @@ namespace FarmaciaSOFT.Migrations
                     b.Property<DateTime>("DataVenda")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NomeProduto")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
@@ -103,9 +100,6 @@ namespace FarmaciaSOFT.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<decimal>("ValorUnitario")
                         .HasColumnType("decimal(10,2)");
 
                     b.HasKey("Id");
@@ -119,12 +113,12 @@ namespace FarmaciaSOFT.Migrations
 
             modelBuilder.Entity("FarmaciaSOFT.Models.Venda", b =>
                 {
-                    b.HasOne("FarmaciaSOFT.Models.Clientes", "Cliente")
+                    b.HasOne("FarmaciaSOFT.Models.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("FarmaciaSOFT.Models.Produtos", "Produto")
+                    b.HasOne("FarmaciaSOFT.Models.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)

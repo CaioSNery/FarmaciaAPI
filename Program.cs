@@ -25,7 +25,7 @@ var key = Encoding.ASCII.GetBytes(jwtSettings.SecretKey);
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "Consultorio API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "Farmacia", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Insira o token JWT no campo abaixo: Bearer {seu_token}",
@@ -79,7 +79,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
 
 builder.Services.Configure<TwilioSettings>(builder.Configuration.GetSection("Twilio"));
 builder.Services.AddScoped<ISMSService, SMSService>();
@@ -87,15 +87,15 @@ builder.Services.AddScoped<IVendaService, VendaService>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 var app = builder.Build();
 
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 
 app.UseHttpsRedirection();

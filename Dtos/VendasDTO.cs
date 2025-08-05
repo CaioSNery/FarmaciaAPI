@@ -10,7 +10,9 @@ namespace FarmaciaSOFT.Models
         public int Id { get; set; }
         public int ClienteId { get; set; }
         public int ProdutoId { get; set; }
-        
+        public DateTime DataVenda { get; set; }
         public int Quantidade { get; set; }
+
+        public decimal Total { get; set; }
     }
 }

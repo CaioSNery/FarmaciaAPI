@@ -26,12 +26,11 @@ namespace FarmaciaSOFT.Maps
             .HasForeignKey(v => v.ProdutoId)
             .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(v => v.ValorUnitario)
-            .HasColumnType("decimal(10,2)");
+
 
             builder.Property(v => v.Total)
             .HasColumnType("decimal(10,2)");
-            
+
         }
     }
 }
