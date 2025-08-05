@@ -89,11 +89,11 @@ namespace FarmaciaSOFT.Services
 
 
 
-            // if (cliente != null && produto != null)
-            // {
-            //     string msg = $"Olá {cliente.Nome}, sua compra de {venda.Quantidade}x {produto.Nome} foi registrada com sucesso!";
-            //     await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
-            // }
+            if (cliente != null && produto != null)
+            {
+                string msg = $"Olá {cliente.Nome}, sua compra de {venda.Quantidade}x {produto.Nome} foi registrada com sucesso!";
+                await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
+            }
 
             return new
             {

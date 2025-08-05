@@ -30,8 +30,8 @@ namespace FarmaciaSOFT.Services
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            // string msg = $"Olá {cliente.Nome}, seu cadastro foi registrado com sucesso,aproveite a promoção de 10% de desconto!";
-            // await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
+            string msg = $"Olá {cliente.Nome}, seu cadastro foi registrado com sucesso,aproveite a promoção de 10% de desconto!";
+            await _smsService.EnviarSMSAsync(cliente.Telefone, msg);
 
             return cliente;
         }
