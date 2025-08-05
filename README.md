@@ -14,6 +14,8 @@ Seu objetivo é permitir o gerenciamento de vendas de medicamentos, aplicação 
 - Atualização de estoque
 - Envio de confirmação de venda via **SMS (Twilio)**
 - Autenticação JWT
+- Integração com **AutoMapper**
+- **Deploy no Azure App Service**
 
 ---
 
@@ -23,7 +25,9 @@ Seu objetivo é permitir o gerenciamento de vendas de medicamentos, aplicação 
 - Entity Framework Core
 - SQL Server
 - Twilio API (SMS)
+- AutoMapper
 - Visual Studio Code
+- Azure App Service
 
 ---
 
@@ -67,12 +71,22 @@ No `appsettings.json`:
 }
 ```
 
-## ▶️ Como Executar
+---
+
+## ☁️ Deploy no Azure
+
+A API está publicada no **Azure App Service**.
+
+> ✅ Permite acesso externo à API com autenticação JWT e funcionalidades integradas via Web.
+
+---
+
+## ▶️ Como Executar Localmente
 
 1. Clone o repositório
 2. Configure o banco no `appsettings.json`
 3. Configure o Twilio
-4. Execute com:
+4. Execute os comandos:
 
 ```bash
 dotnet ef database update
@@ -83,9 +97,9 @@ dotnet run
 
 ## 🚧 Funcionalidades Futuras
 
-- Integração com AutoMapper
 - Testes unitários com xUnit e Moq
-- Dashboard para vendas
+- Dashboard para vendas (Web UI)
+- Upload de receitas médicas (PDF)
 
 ---
 
