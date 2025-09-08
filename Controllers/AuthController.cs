@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FarmaciaSOFT.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -23,14 +23,14 @@ namespace FarmaciaSOFT.Controllers
         public IActionResult Login([FromBody] LoginDTO dto)
         {
             if (dto.UserName == "admin" && dto.Password == "123456")
-        {
-            var token = _authService.GenerateToken(dto.UserName, "Admin");
-            return Ok(new { token });
+            {
+                var token = _authService.GenerateToken(dto.UserName, "Admin");
+                return Ok(new { token });
+            }
+
+            return Unauthorized("Usuário ou senha inválidos");
         }
 
-        return Unauthorized("Usuário ou senha inválidos");
-    }
 
-
-        }
     }
+}

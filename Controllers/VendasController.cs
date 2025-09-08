@@ -11,16 +11,16 @@ using Microsoft.EntityFrameworkCore;
 namespace FarmaciaSOFT.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
     public class VendasController : ControllerBase
     {
-        private readonly IVendaService _vendaservice;
-        public VendasController(IVendaService vendaservice)
+        private readonly IVendaRepository _vendaservice;
+        public VendasController(IVendaRepository vendaservice)
         {
             _vendaservice = vendaservice;
         }
 
-        [HttpPost]
+        [HttpPost("vendas")]
         public async Task<ActionResult> RealizarVenda([FromBody] VendasDTO vendasDTO)
         {
             var resultado = await _vendaservice.RealizarVendaAsync(vendasDTO);
@@ -33,8 +33,8 @@ namespace FarmaciaSOFT.Controllers
             return Ok(resultado);
         }
 
-        
-        [HttpGet]
+
+        [HttpGet("vendas")]
         public async Task<ActionResult<IEnumerable<Venda>>> ObterVendas()
         {
             var vendas = await _vendaservice.ListarVendasAsync();
@@ -42,7 +42,7 @@ namespace FarmaciaSOFT.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("vendas/{id:int}")]
         public async Task<ActionResult<Venda>> GetIdVendas(int id)
         {
             var venda = await _vendaservice.BuscarVendasPorIdAsync(id);
@@ -51,16 +51,16 @@ namespace FarmaciaSOFT.Controllers
                 return NotFound();
             }
             return Ok(venda);
-            
 
-            
+
+
         }
 
-        
-        
 
 
 
-        
+
+
+
     }
 }

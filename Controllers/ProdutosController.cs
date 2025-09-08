@@ -14,30 +14,30 @@ using Microsoft.EntityFrameworkCore;
 namespace FarmaciaSOFT.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
     public class ProdutosController : ControllerBase
     {
-        private readonly IProdutoService _service;
+        private readonly IProdutoRepository _service;
 
-        public ProdutosController(IProdutoService service)
+        public ProdutosController(IProdutoRepository service)
         {
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPost("produtos")]
         public async Task<IActionResult> AdicionarProduto(Produto produtos)
         {
             var resultado = await _service.AdicionarProdutoAsync(produtos);
             return Ok(resultado);
         }
-        [HttpGet]
+        [HttpGet("produtos")]
         public async Task<IActionResult> ListarProdutos()
         {
             var produtos = await _service.ListarProdutosAsync();
             return Ok(produtos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("produtos/{id:int}")]
         public async Task<IActionResult> BuscarProdutoPorId(int id)
         {
             var produto = await _service.BuscarProdutosPorId(id);
@@ -48,7 +48,7 @@ namespace FarmaciaSOFT.Controllers
             return Ok(produto);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("produtos/{id:int}")]
         public async Task<IActionResult> AtualizarProduto(int id, [FromBody] Produto produtoAtualizado)
 
         {
@@ -56,14 +56,14 @@ namespace FarmaciaSOFT.Controllers
             return Ok("Atualizado com sucesso !");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("produtos/{id:int}")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
             var delproduto = await _service.DeletarProdutoAsync(id);
-            if (!delproduto)return NotFound();
-        
+            if (!delproduto) return NotFound();
+
             return Ok("Removido com sucesso !");
         }
-        
+
     }
 }
